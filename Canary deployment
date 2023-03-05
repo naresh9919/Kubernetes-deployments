@@ -1,0 +1,8 @@
+Canary deployment is a deployment strategy that involves gradually rolling out a new version of an application to a small subset of users or servers before making it available to everyone. Here is an example of a YAML file for a Kubernetes deployment that uses a Canary deployment strategy:
+In this YAML file, we are creating a Kubernetes deployment object for the Canary deployment. The deployment will run three replicas of the application, each labeled with app: myapp, env: production, and version: v2. The container specification includes the application image, which is myapp:v2, and the port number 80.
+
+The strategy section of the YAML file defines the rolling update strategy that Kubernetes will use to update the deployment. The maxSurge field specifies the maximum number of additional pods that can be created above the desired number of replicas during the deployment, and the maxUnavailable field specifies the maximum number of replicas that can be unavailable during the deployment.
+
+The readinessProbe section of the YAML file defines a HTTP health check that Kubernetes will use to determine if the pods are ready to receive traffic. The initialDelaySeconds field specifies the number of seconds that Kubernetes should wait before checking the pod's health, and the periodSeconds field specifies the frequency of the health checks.
+
+By gradually increasing the number of replicas with the new version of the application, Canary deployment strategy allows for a safer and more controlled release process while minimizing the impact on the users.
